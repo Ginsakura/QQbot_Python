@@ -11,7 +11,7 @@ def Premise(user,time):##判断文件状态、用户数据读取模块##已完�
     Month = datetime.datetime.now().month
     Day = datetime.datetime.now().day
     File = f'{Year}-{Month}-{Day}.Log'
-    Path = f'{os.getcwd()}\\Fortune\\'
+    Path = f'{os.getcwd()}\\Fortune_Data\\'
     if os.path.isfile(Path + File) == False :
         if os.path.exists(Path) == False :
             os.makedirs(Path)
