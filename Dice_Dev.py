@@ -15,7 +15,7 @@ def dice(cmd: str) -> str:
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        if re.match(r'^(r{0,1}\d*d\d*)$', sys.argv[2]):
+        if re.match(r'^(r\d*d\d*)|(r)$', sys.argv[2]):
             print(dice(sys.argv[-1]))
         elif re.match(r'^(sc)$', sys.argv[2]):
             pass
