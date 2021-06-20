@@ -7,6 +7,8 @@
 
 以ini格式存储（后续会改为SQLite）
 
+使用方式：Fortune.py [QQ号]
+
 ## Dice
 ### Version0.1.0
 
@@ -16,3 +18,5 @@
 ### Version0.1.0
 
 一个好感度插件，临近完成，尚未经过测试，数据存储使用SQLite
+
+使用方式：Favorability.py [对bot的操作] [QQ号]
