@@ -3,8 +3,8 @@
 import random
 import sys
 import datetime
-import configparser
 import os
+import configparser
 
 def Premise(user,time):##判断文件状态、用户数据读取模块##已完成##测试通过##
     Year = datetime.datetime.now().year
