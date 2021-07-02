@@ -5,14 +5,19 @@ import re
 
 # 骰子命令解析函数
 def dice(cmd: str) -> str:
+    s = int()
+    res = str()
+    cmd = cmd.lower()
     try:
-        # 处理标准的骰子命令
-        tmp = cmd.replace("r", "").split("d")
-        t = int(tmp[0])
-        m = int(tmp[1])
-        s = int()
-        res = str()
-
+        if "d" in cmd:
+            tmp = cmd.replace("r", "").split("d")
+            t = 1 if tmp[0] == "" else int(tmp[0])
+            m = 100 if tmp[1] == "" else int(tmp[1])
+            rea = ""
+        elif "r" in cmd:
+            t = 1
+            m = 100
+            rea = f"因为{cmd[1:]}" if cmd[1:] != "" else ""
         # 投掷骰子
         for _ in range(0, t):
             n = random.randint(1, m)
@@ -20,20 +25,18 @@ def dice(cmd: str) -> str:
             s += n
 
         # 输出结果
-        return f"您掷得的点数是 R{t}D{m}={res[1:]}={s}。"
+        return f'{f"{rea}您掷得的点数是 R{t}D{m}={res[1:]}"}{f"={s}" if t != 1 else ""}'
 
     # 有任何错误都一定是命令错了
-    except:
+    except Exception as e:
         return "指令错误！"
 
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
 
-        # 在第三个参数中匹配形如 r (一串数字) d (一串数字) 或者单独 r 的字符串
-        if re.match(r'^(r\d*d\d*)|(r)$', sys.argv[2]):
-            print(dice(sys.argv[-1]))  # 最后一个参数必定为标准骰子命令
-
+        if re.match(r'^((r\d*d\d*)|(r.*)|(\d*d\d*))$', sys.argv[2]):
+            print(dice(sys.argv[-1]))
         # 暂未实现功能
         elif re.match(r'^(sc)$', sys.argv[2]):
             pass
