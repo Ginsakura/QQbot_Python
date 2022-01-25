@@ -1,5 +1,12 @@
 # QQbot_功能模块
 
+## Cloud music
+### Version 1.1.0
+
+使用方式：Cloudmusic.py [QQ号] [传入文本]
+
+接收文本，若有“ID”部分，后续取数字作为网易云歌曲ID进行返回
+
 ## Fortune
 ### Version2.1.2
 
