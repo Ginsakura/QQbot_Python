@@ -1,4 +1,4 @@
-# QQbot_响应模块（适用于铃心）
+# QQbot_功能模块
 
 ## Fortune
 ### Version2.1.2
