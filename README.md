@@ -26,7 +26,7 @@
 骰娘，并没有写完
 
 ## Everyday60s
-### Version 1.2.5
+### Version 1.2.6
 
 使用方式：`./Everyday60s.py`
 
