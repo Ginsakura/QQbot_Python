@@ -1,6 +1,6 @@
 # QQbot_功能模块
 
-## [Cloud music](https://github.com/Ginsakura/QQbot/tree/main/Cloud_Music)
+## [Cloud music](https://github.com/Ginsakura/QQbot_Python/tree/main/Cloud_Music)
 ### Version 1.1.0
 
 使用方式：`./Cloudmusic.py [QQ号] [传入文本]`
@@ -9,7 +9,7 @@
 
 处理后，存储操作数据至`./Cloudmusic_Data/Cloudmusic_Data.db`中。
 
-## [Costom Welcome](https://github.com/Ginsakura/QQbot/tree/main/Costom_Welcome)
+## [Costom Welcome](https://github.com/Ginsakura/QQbot_Python/tree/main/Costom_Welcome)
 ### Version 0.0.1
 
 使用方式：未定义
@@ -20,12 +20,12 @@
 
 处理后，存储操作数据至`./Costom_Welcome_Data/Costom_Welcome_Data.db`中。
 
-## [Dice](https://github.com/Ginsakura/QQbot/tree/main/Dice)
+## [Dice](https://github.com/Ginsakura/QQbot_Python/tree/main/Dice)
 ### Version 0.1.0
 
 骰娘，并没有写完
 
-## [Everyday60s](https://github.com/Ginsakura/QQbot/tree/main/Everyday60s)
+## [Everyday60s](https://github.com/Ginsakura/QQbot_Python/tree/main/Everyday60s)
 ### Version 1.2.6
 
 使用方式：`./Everyday60s.py`
@@ -38,7 +38,7 @@ pip列表：
 `pip install requests_html`
 `pip install pillow`
 
-## [Favorability](https://github.com/Ginsakura/QQbot/tree/main/Favorability)
+## [Favorability](https://github.com/Ginsakura/QQbot_Python/tree/main/Favorability)
 ### Version 1.0.3
 
 使用方式：`./Favorability.py [操作] [QQ号]`
@@ -47,7 +47,7 @@ pip列表：
 
 数据存储方式为SQLite数据库，位于`./Favorability_Data/Favorability_Database.db`
 
-## [Fortune](https://github.com/Ginsakura/QQbot/tree/main/Fortune)
+## [Fortune](https://github.com/Ginsakura/QQbot_Python/tree/main/Fortune)
 ### Version 4.0.2
 
 使用方式：`./Fortune.py [QQ号]`
@@ -63,7 +63,7 @@ pip列表：
 pip列表：
 `pip install requests_html`
 
-## [System Status](https://github.com/Ginsakura/QQbot/tree/main/System_Status)
+## [System Status](https://github.com/Ginsakura/QQbot_Python/tree/main/System_Status)
 ### Version 1.0.0
 
 使用方式：`./System_Status.py [QQ号]`
@@ -75,7 +75,7 @@ pip列表：
 pip列表：
 `pip install psutil`
 
-## [Tarot](https://github.com/Ginsakura/QQbot/tree/main/Tarot)
+## [Tarot](https://github.com/Ginsakura/QQbot_Python/tree/main/Tarot)
 ### Version 1.0.1
 
 使用方式：`./Tarot.py [QQ号]`
