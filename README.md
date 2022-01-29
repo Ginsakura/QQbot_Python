@@ -1,5 +1,9 @@
 # QQbot_功能模块
 
+通用模块,只要能调用/加载外部文件/脚本/应用程序的bot插件均可调用本系列脚本
+
+C++重构版:[QQbot_CPP](https://github.com/Ginsakura/QQbot_cpp)
+
 ## [Cloud music](https://github.com/Ginsakura/QQbot_Python/tree/main/Cloud_Music)
 ### Version 1.1.0
 
