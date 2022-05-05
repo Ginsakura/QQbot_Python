@@ -179,6 +179,6 @@ class Fortune():
             return f'今天是{Read_Data[0][0:3]}哦……'
 
 if __name__ == '__main__':
-    s = Fortune(123456)
+    s = Fortune(sys.argv[-1])
     s.Main()
     
