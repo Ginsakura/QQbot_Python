@@ -52,7 +52,7 @@ pip列表：
 数据存储方式为SQLite数据库，位于`./Favorability_Data/Favorability_Database.db`
 
 ## [Fortune](https://github.com/Ginsakura/QQbot_Python/tree/main/Fortune)
-### Version 4.0.2
+### Version 5.0.0
 
 使用方式：`./Fortune.py [QQ号]`
 
