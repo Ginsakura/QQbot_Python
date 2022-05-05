@@ -14,6 +14,10 @@ pip列表：
 `pip install requests_html`
 
 ### 更新信息:
+#### Version 5.0.0
+
+`->1.将函数修改为类方式实现`
+
 #### Version 4.0.2
 
 `->1.轻度修改部分运势评价词`
