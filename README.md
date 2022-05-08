@@ -2,6 +2,8 @@
 
 通用模块,只要能调用/加载外部文件/脚本/应用程序的bot插件均可调用本系列脚本
 
+`以类重写的版本是为了适配基于Go-CQHttp开发的Python框架`
+
 C++重构版:[QQbot_CPP](https://github.com/Ginsakura/QQbot_cpp)
 
 ## [Cloud music](https://github.com/Ginsakura/QQbot_Python/tree/main/Cloud_Music)
