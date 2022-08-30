@@ -41,8 +41,10 @@ C++重构版:[QQbot_CPP](https://github.com/Ginsakura/QQbot_cpp)
 图片存储于`./Img/`文件夹内
 
 pip列表：
-`pip install requests_html`
-`pip install pillow`
+
+    `pip install requests_html`
+
+    `pip install pillow`
 
 ## [Favorability](https://github.com/Ginsakura/QQbot_Python/tree/main/Favorability)
 ### Version 1.0.3
