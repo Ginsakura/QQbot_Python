@@ -32,7 +32,7 @@ C++重构版:[QQbot_CPP](https://github.com/Ginsakura/QQbot_cpp)
 骰娘，并没有写完
 
 ## [Everyday60s](https://github.com/Ginsakura/QQbot_Python/tree/main/Everyday60s)
-### Version 1.2.6
+### Version 1.3.1
 
 使用方式：`./Everyday60s.py`
 
