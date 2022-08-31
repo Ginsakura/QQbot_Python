@@ -6,7 +6,7 @@
 
 C++重构版:[QQbot_CPP](https://github.com/Ginsakura/QQbot_cpp)
 
-##[AzurLane Script](https://github.com/Ginsakura/QQbot_Python/tree/main/AzurLane)
+## [AzurLane Script](https://github.com/Ginsakura/QQbot_Python/tree/main/AzurLane)
 ### Version 0.0.1
 
 使用方式：`./AzurLane.py <command> [argument]`
