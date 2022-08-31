@@ -6,10 +6,17 @@
 
 C++重构版:[QQbot_CPP](https://github.com/Ginsakura/QQbot_cpp)
 
+##[AzurLane Script](https://github.com/Ginsakura/QQbot_Python/tree/main/AzurLane)
+### Version 0.0.1
+
+使用方式：`./AzurLane.py <command> [argument]`
+
+框架搭建中······
+
 ## [Cloud music](https://github.com/Ginsakura/QQbot_Python/tree/main/Cloud_Music)
 ### Version 2.0.0
 
-使用方式：`./Cloudmusic.py [QQ号] [传入文本]`
+使用方式：`./Cloudmusic.py <QQ号> <传入文本>`
 
 接收文本，若有“ID”部分，后续取数字作为网易云歌曲ID进行返回。
 
@@ -49,7 +56,7 @@ pip列表：
 ## [Favorability](https://github.com/Ginsakura/QQbot_Python/tree/main/Favorability)
 ### Version 1.0.3
 
-使用方式：`./Favorability.py [操作] [QQ号]`
+使用方式：`./Favorability.py <操作> <QQ号>`
 
 不成熟的好感度插件。
 
@@ -58,7 +65,7 @@ pip列表：
 ## [Fortune](https://github.com/Ginsakura/QQbot_Python/tree/main/Fortune)
 ### Version 5.0.0
 
-使用方式：`./Fortune.py [QQ号]`
+使用方式：`./Fortune.py <QQ号>`
 
 抽取运势，每天每用户第一次调用时进行计算，并将结果存入数据库，
 
@@ -74,7 +81,7 @@ pip列表：
 ## [System Status](https://github.com/Ginsakura/QQbot_Python/tree/main/System_Status)
 ### Version 1.0.0
 
-使用方式：`./System_Status.py [QQ号]`
+使用方式：`./System_Status.py <QQ号>`
 
 传入操作人，并且对比是否为允许操作用户，
 
@@ -84,9 +91,9 @@ pip列表：
 `pip install psutil`
 
 ## [Tarot](https://github.com/Ginsakura/QQbot_Python/tree/main/Tarot)
-### Version 1.0.1
+### Version 1.0.2
 
-使用方式：`./Tarot.py [QQ号]`
+使用方式：`./Tarot.py <QQ号>`
 
 传入操作人，自动计算抽取塔罗牌，每次抽取三张。
 
