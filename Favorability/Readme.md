@@ -1,6 +1,6 @@
 ## Favorability
 
-使用方式：`./Favorability.py [操作] [QQ号]`
+使用方式：`./Favorability.py <操作> <QQ号>`
 
 不成熟的好感度插件。
 
