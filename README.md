@@ -14,7 +14,7 @@ C++重构版:[QQbot_CPP](https://github.com/Ginsakura/QQbot_cpp)
 框架搭建中······
 
 ## [Cloud music](https://github.com/Ginsakura/QQbot_Python/tree/main/Cloud_Music)
-### Version 2.0.0
+### Version 2.0.1
 
 使用方式：`./Cloudmusic.py <QQ号> <传入文本>`
 
