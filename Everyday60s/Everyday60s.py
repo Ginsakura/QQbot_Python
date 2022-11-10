@@ -1,4 +1,4 @@
-##Version 1.4.1##fix bug##
+##Version 1.4.2##fix bug##
 import io
 import os
 import re
@@ -52,7 +52,13 @@ def Day60s(url60):
 	#imgf.close()
 	#headimg = headimg.content
 	Headimg = io.BytesIO(headimg.content)
-	paragraph = day60.html.find('div.css-1yuhvjn>div>p')
+	try:
+		paragraph = day60.html.find('div.css-1yuhvjn>div>p')
+	except:
+		try:
+			paragraph = day60.html.find('div.css-1yuhvjn>div>div>p')
+		except:
+			print("Text Find Error")
 	webdate = paragraph[1].text
 	head = paragraph[2].text
 	del paragraph[0:3]

@@ -12,6 +12,12 @@ pip列表：
 `pip install pillow`
 
 ### 更新信息：
+#### Version 1.4.2
+
+`->1.Fix Bug`
+
+`->2.Add Some Bug`
+
 #### Version 1.4.1
 
 `->1.修复缩进问题`
