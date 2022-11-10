@@ -54,12 +54,13 @@ def Day60s(url60):
 	Headimg = io.BytesIO(headimg.content)
 	try:
 		paragraph = day60.html.find('div.css-1yuhvjn>div>p')
+		webdate = paragraph[1].text
 	except:
 		try:
 			paragraph = day60.html.find('div.css-1yuhvjn>div>div>p')
+			webdate = paragraph[1].text
 		except:
 			print("Text Find Error")
-	webdate = paragraph[1].text
 	head = paragraph[2].text
 	del paragraph[0:3]
 	text = list()
@@ -143,7 +144,7 @@ def Make_Image(headimage, date, text):#头图bin，日期，正文传入
 	#Output()
 
 
-def OutPut():
+def Output():
 	print(f'[CQ:image,cache=0,file=file:///C:/Users/Administrator/Desktop/MiraiCQ/Img/Everyday60s-{year}.{month}.{day}.png]')
 
 def Hight(text):
