@@ -1,4 +1,4 @@
-##Version 5.0.3##bug修复##
+##Version 5.0.4##文本修复##
 import os
 import re
 import sys
@@ -110,8 +110,8 @@ class Fortune():
             return f'{self.result}'
 
     def Special(self):##额外判定逻辑模块
-        review = ['\n这……请吃好喝好……注意天空，注意地面……（默哀脸）',
-        '\n喵↑？你真的没有作弊吗？（怀疑的目光）','\n换言之……也是一种幸运呢……','\n好幸运喵（★ω★）']
+        review = ['这……请吃好喝好……注意天空，注意地面……（默哀脸）',
+        '喵↑？你真的没有作弊吗？（怀疑的目光）','换言之……也是一种幸运呢……','好幸运喵（★ω★）']
         if self.main_num == 1 :
             self.result = '大凶'
             x = 0
