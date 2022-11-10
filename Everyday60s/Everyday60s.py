@@ -144,8 +144,7 @@ def Make_Image(headimage, date, text):#头图bin，日期，正文传入
 
 
 def OutPut():
-	#print(f'[CQ:image,cache=0,file=file:///C:/Users/Administrator/Desktop/MiraiCQ/Img/Everyday60s-{year}.{month}.{day}.png]')
-	pass
+	print(f'[CQ:image,cache=0,file=file:///C:/Users/Administrator/Desktop/MiraiCQ/Img/Everyday60s-{year}.{month}.{day}.png]')
 
 def Hight(text):
 	#print("hight")
