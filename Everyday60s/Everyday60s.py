@@ -145,7 +145,7 @@ def Make_Image(headimage, date, text):#头图bin，日期，正文传入
 	#img.save(File_RAM, 'png')
 	#图像渲染与显示
 	img.show()
-	#Output()
+	Output()
 
 
 def Output():
