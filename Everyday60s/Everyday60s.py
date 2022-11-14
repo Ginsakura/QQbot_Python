@@ -1,4 +1,4 @@
-##Version 1.4.2##fix bug##
+##Version 1.4.3##fix bug##
 import io
 import os
 import re
@@ -25,7 +25,7 @@ def Get_Web_Page(url):
 			print("404 Not Found.")
 		url60 = "".join(dayLink)
 		print(url60)
-		db_write(url60)
+		#db_write(url60)
 		#req = re.findall(r'([0-9]{0,2})月([0-9]{0,2})日',date_web.text)
 		#if req[0][0] == f"{month}" and req[0][1] == f'{day}' :
 		#	dayLink = web.html.find('h2>a',first=True).absolute_links
@@ -35,8 +35,12 @@ def Get_Web_Page(url):
 		#	print("Today not have Everyday 60 Second To Read The World's data.")
 	except:
 		print("Not found the web page.")
-	if not url60 == '':
+	if os.path.isfile(f'./Img/Everyday60s-{year}.{month}.{day}.png'):
+		Output()
+	elif not url60 == '':
 		Day60s(url60)
+	else:
+		print("Find Link Error.")
 
 def db_write(url):
 	pass
