@@ -79,7 +79,7 @@ pip列表：
 `pip install requests_html`
 
 ## [System Status](https://github.com/Ginsakura/QQbot_Python/tree/main/System_Status)
-### Version 1.0.0
+### Version 1.0.1
 
 使用方式：`./System_Status.py <QQ号>`
 
