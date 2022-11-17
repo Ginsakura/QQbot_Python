@@ -91,7 +91,7 @@ pip列表：
 `pip install psutil`
 
 ## [Tarot](https://github.com/Ginsakura/QQbot_Python/tree/main/Tarot)
-### Version 1.0.2-Pre
+### Version 1.0.1 (1.0.2-Pre)
 
 使用方式：`./Tarot.py <QQ号>`
 
@@ -99,4 +99,8 @@ pip列表：
 
 数据存储至SQLite数据库：`./Tarot_Data/Tarot_Data.db`
 
-下次更新修改数据存储格式。
+####预发布
+
+`1.使用pillow库进行塔罗牌卡牌制图`
+
+`2.补充卡牌解析(数组)`
