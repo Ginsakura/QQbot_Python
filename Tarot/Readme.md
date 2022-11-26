@@ -7,13 +7,15 @@
 数据存储至SQLite数据库：`./Tarot_Data/Tarot_Data.db`
 
 ### 更新信息:
-#### Version 1.0.2-Pre
+#### Version 2.0.0-Pre
 
 `->1.卡牌制图(Pillow)`
 
 `->2.释义`
 
 `->3.更换存储数据结构`
+
+`->4.以类方式重写`
 
 #### Version 1.0.1
 
