@@ -91,7 +91,7 @@ pip列表：
 `pip install psutil`
 
 ## [Tarot](https://github.com/Ginsakura/QQbot_Python/tree/main/Tarot)
-### Version 1.0.1 (1.0.2-Pre)
+### Version 1.0.1 (2.0.0-Pre)
 
 使用方式：`./Tarot.py <QQ号>`
 
