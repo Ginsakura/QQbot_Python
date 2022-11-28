@@ -7,16 +7,16 @@ import time as pause
 import random
 import sqlite3
 import datetime
-import pillow
+import PIL
 #import Paraphrase
 
-'''[
-Big_Akana[#解释命运的大致运势。],
-Small_Akana_Leangle[#【权杖】（The Leangle）代表元素火，象征激情、能量和创造。],
-Small_Akana_Garren[#【星币】（The Garren）代表元素土，象征金钱、物质和享受。],
-Small_Akana_Chalice[#【圣杯】（The Chalice）代表元素水，象征情感、关系、爱和灵感。],
-Small_Akana_Blade[#【宝剑】（The Blade）代表元素风，象征思想、智慧、交流和冲突。]
-]'''
+'''
+Big_Akana[解释命运的大致运势。],
+Small_Akana_Leangle[【权杖】（The Leangle）代表元素火，象征激情、能量和创造。]
+Small_Akana_Garren[【星币】（The Garren）代表元素土，象征金钱、物质和享受。]
+Small_Akana_Chalice[【圣杯】（The Chalice）代表元素水，象征情感、关系、爱和灵感。]
+Small_Akana_Blade[【宝剑】（The Blade）代表元素风，象征思想、智慧、交流和冲突。]
+'''
 #小阿卡那牌是用来补足大阿卡那牌不足之处。
 #若是我们想要更进一步知道命运的真相或是对方的事情。
 #其中由侍从、骑士、皇后、国王组成的人物牌，也称为宫廷牌（Court cards）。
@@ -25,7 +25,6 @@ class Tarot():
     def __init__(self,user,group):
         self.path = './Data/'
         self.file = 'Tarot_Data.db'
-        self.table = 'Tarot_Data'
         self.DB = None
         self.cur = None
 
@@ -45,10 +44,18 @@ class Tarot():
         self.second = list()
         self.third = list()
 
-        self.version = 'Version_1.0.1'
+        self.card1 = None
+        self.card2 = None
+        self.card3 = None
+
+        self.version = 'Version_2.0.0 Pre'
 
     def main(self):
         self.Premise()
+        if self.UserDataRead() == 0:
+            self.Logic()
+            self.UserDataWrite()
+            self.Output()
 
     def Premise(self):
         if not os.path.exists(self.path) :
@@ -57,87 +64,60 @@ class Tarot():
             self.DB = sqlite3.connect(f'{self.path}{self.file}')
             self.cur = self.DB.cursor()
             self.cur.execute(f'''
-            Create table 
-            Tarot (
-            User integer not null,
-            Group integer not null,
-            Date text not null,
-            Time text not null,
-            First_Card integer
-            First_Card_Bit integer,
-            Second_Card integer,
-            Second_Card_Bit integer,
-            Third_Card integer,
-            Third_Card_Bit integer,
-            Primary Key(User, Date)
-            );''')
-            self.cur.execute(f'insert into {Table} values(?,?,?,?,?,?,?,?,?,?)', (2602961063,-1,self.date,self.time,0,0,0,0,0,0))
+                Create table Tarot (
+                    User integer not null,
+                    GroupID integer,
+                    Date text not null,
+                    Time text not null,
+                    First_Card text,
+                    Second_Card text,
+                    Third_Card text,
+                    Primary Key(User, Date)
+                );''')
+            self.cur.execute(f'insert into Tarot values(?,?,?,?,?,?,?)', (2602961063,-1,self.date,self.time,'0','0','0'))
             self.DB.commit()
-        self.DB = sqlite3.connect(f'{self.path}{self.file}')
-        self.cur = self.DB.cursor()
+        else:
+            self.DB = sqlite3.connect(f'{self.path}{self.file}')
+            self.cur = self.DB.cursor()
 
     def Random(self):
         x = random.randint(0,int((self.lenAkana-1)*random.uniform(0.1,1)*random.randint(1,10)))%self.lenAkana
         y = random.randint(0,int((self.lenAkanaNum[x]-1)*random.uniform(0.1,1)*random.randint(1,10)))%self.lenAkanaNum[x]
         z = random.randint(1,100)%2
-        print(x,y,z)
-        return x,y,z
+        print(f'[{x},{y},{z}]')
+        return [x,y,z]
 
+    def Logic(self):
+        self.first = self.Random()
+        self.second = self.Random()
+        while self.second == self.first :
+            self.second = self.Random()
+        self.third = self.Random()
+        while (self.third == self.second) or (self.third == self.first):
+            self.third = self.Random()
+        self.card1 = f'{self.akana[self.first[0]][self.first[1]]} {self.bit[self.first[2]]}'
+        self.card2 = f'{self.akana[self.second[0]][self.second[1]]} {self.bit[self.second[2]]}'
+        self.card3 = f'{self.akana[self.third[0]][self.third[1]]} {self.bit[self.third[2]]}'
 
-def main():
-    global user
-    times = 1
-    first,second,third = None,None,None
-    x,y,z = Random()
-    first = f'{Akana[x][y]} {Bit[z]}'
-    ft = Akana[x][y]
-    fx,fy,fz = x,y,z
-    x,y,z = Random()
-    second = f'{Akana[x][y]} {Bit[z]}'
-    st = Akana[x][y]
-    sx,sy,sz = x,y,z
-    x,y,z = Random()
-    third = f'{Akana[x][y]} {Bit[z]}'
-    tt = Akana[x][y]
-    tx,ty,tz = x,y,z
-    while st == ft :
-        x,y,z = Random()
-        second = f'{Akana[x][y]} {Bit[z]}'
-        sx,sy,sz = x,y,z
-    while tt == ft :
-        x,y,z = Random()
-        third = f'{Akana[x][y]} {Bit[z]}'
-        tx,ty,tz = x,y,z
-    while tt == st :
-        x,y,z = Random()
-        third = f'{Akana[x][y]} {Bit[z]}'
-        tx,ty,tz = x,y,z
-    Output(first,fx,fy,fz,second,sx,sy,sz,third,tx,ty,tz)
-    #print(f'{first},{fx},{fy},{fz}\n{second},{sx},{sy},{sz}\n{third},{tx},{ty},{tz}')
+    def Output(self):
+        print(f'[CQ:at,qq={self.user}]\n{self.card1}\n{self.card2}\n{self.card3}\n{self.version}')
 
+    def UserDataRead(self):
+        data = self.cur.execute(f'select * from Tarot where User=\'{self.user}\' and Date=\'{self.date}\'')
+        readData = data.fetchone()
+        if not readData == None :
+            print(f'[CQ:at,qq={self.user}]\n已于{readData[2]}-{readData[3]}进行抽取\n结果为:\n{readData[4]}\n{readData[5]}\n{readData[6]}\n{self.version}')
+            return 1
+        else:
+            return 0
 
-
-def Output(first,fx,fy,fz,second,sx,sy,sz,third,tx,ty,tz):
-    User_Data_Write(first,second,third)
-    print(f'[CQ:at,qq={user}]\n{first}\n{second}\n{third}\n{Version}')
-    #Paraphrase
-
-def User_Data_Write(first,second,third):##占卜数据写入模块##
-    global user,Path,File,Table
-    Database = sqlite3.connect(Path+File)
-    cur = Database.cursor()
-    time = datetime.datetime.now()
-    cur.execute(f'insert into {Table} values(?,?,?,?,?)', (time,user,first,second,third))
-    Database.commit()
-    Database.close()
+    def UserDataWrite(self):
+        self.cur.execute(f'insert into Tarot values(?,?,?,?,?,?,?)', (self.user,self.group,self.date,self.time,self.card1,self.card2,self.card3))
+        self.DB.commit()
+        self.DB.close()
 
 if __name__ == '__main__':
-    global user
-    user = sys.argv[-1]
-    date = datetime.date.today()
-    seed = f'{user}{date.year}{date.month}{date.day}'
-    random.seed(seed)
-    Pre = Premise()
-    if not Pre == True :
-        New_Table(Pre)
-    main()
+    #CLI: ./Tarot.py QQNumber GroupNumber
+    #s = Tarot(sys.argv[-2],sys.argv[-1])
+    s = Tarot(123456,1234)
+    s.main()
