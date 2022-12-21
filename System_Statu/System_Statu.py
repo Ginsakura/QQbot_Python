@@ -1,4 +1,4 @@
-##Version 1.0.1##新增开机时长显示##
+##Version 1.0.2##修改输出结构标识##
 import psutil
 import sys
 import datetime
@@ -13,21 +13,21 @@ def main():
     #print(bootTime)
     deltaTime = datetime.datetime.now() - bootTime
     print(f'''
-->系统信息:
---->CPU利用率:{CPU}%
---->物理内存:
------>总内存:{round(RAM_phi[0]/1024/1024/1024,3)}GB
------>已用内存:{round(RAM_phi[3]/1024/1024/1024,3)}GB
------>可用内存:{round(RAM_phi[4]/1024/1024/1024,3)}GB
------>内存利用率:{round(RAM_phi[3]/RAM_phi[0],5)*100}%
---->硬盘利用率:
------>总空间:{round(ROM[0]/1024/1024/1024,3)}GB
------>已用空间:{round(ROM[1]/1024/1024/1024,3)}GB
------>可用空间:{round(ROM[2]/1024/1024/1024,3)}GB
------>磁盘使用率:{round(ROM[1]/ROM[0],5)*100}%
---->开机信息:
------>开机时间:{bootTime}
------>开机时长:{deltaTime}
+╔系统信息:
+╠═CPU利用率:{CPU}%
+╠╦物理内存:
+║╠═总内存:{round(RAM_phi[0]/1024/1024/1024,3)}GB
+║╠═已用内存:{round(RAM_phi[3]/1024/1024/1024,3)}GB
+║╠═可用内存:{round(RAM_phi[4]/1024/1024/1024,3)}GB
+║╚═内存利用率:{round(RAM_phi[3]/RAM_phi[0],5)*100}%
+╠╦硬盘利用率:
+║╠═总空间:{round(ROM[0]/1024/1024/1024,3)}GB
+║╠═已用空间:{round(ROM[1]/1024/1024/1024,3)}GB
+║╠═可用空间:{round(ROM[2]/1024/1024/1024,3)}GB
+║╚═磁盘使用率:{round(ROM[1]/ROM[0],5)*100}%
+╚╦开机信息:
+  ╠═开机时间:{bootTime}
+  ╚═开机时长:{deltaTime}
         ''')
 
 '''CPU
