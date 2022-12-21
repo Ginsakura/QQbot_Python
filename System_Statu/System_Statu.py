@@ -76,5 +76,3 @@ if __name__ == '__main__':
     purview = '2602961063'
     if purview == '2602961063' :
         main()
-    else:
-        print('None')
