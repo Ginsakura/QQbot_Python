@@ -6,6 +6,20 @@
 
 C++重构版:[QQbot_CPP](https://github.com/Ginsakura/QQbot_cpp)
 
+## [Favorability Manage System](https://github.com/Ginsakura/QQbot_Python/tree/main/Favorability_Manage_System)
+### Version 0.0.1
+
+使用方式 `import FavorabilityMS`
+
+框架搭建中······
+
+## [Check In](https://github.com/Ginsakura/QQbot_Python/tree/main/Check_In)
+### Version 0.0.1
+
+使用方式 `./CheckIn.py <user> <group>`
+
+框架搭建中······
+
 ## [AzurLane Script](https://github.com/Ginsakura/QQbot_Python/tree/main/AzurLane)
 ### Version 0.0.1
 

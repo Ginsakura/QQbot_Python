@@ -1,4 +1,4 @@
-## Favorability Mananger System
+## Favorability Manange System
 
 使用方式: `import FavorabilityMS`
 
