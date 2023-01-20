@@ -84,8 +84,7 @@ def Day60s(url60):
 	else:
 		if text[-1] == '':
 			text.pop(-1)
-		print(text)
-		#Make_Image(Headimg, webdate, text)
+		Make_Image(Headimg, webdate, text)
 
 def DownloadImg(imgUrl):
 	src = imgUrl[0].attrs.get("data-original")
