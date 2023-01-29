@@ -27,7 +27,7 @@ def main():
 ║╚═磁盘使用率:{round(ROM[1]/ROM[0],5)*100}%
 ╚╦开机信息:
   ╠═开机时间:{bootTime.strftime('%Y-%m-%d %H:%M:%S')}
-  ╚═开机时长:{deltaTime.strftime('%Y-%m-%d %H:%M:%S')}''')
+  ╚═开机时长:{deltaTime}''')
 
 '''CPU
 psutil.cpu_count() # cpu数量
