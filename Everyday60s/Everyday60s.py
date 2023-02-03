@@ -63,7 +63,7 @@ class ED60S(object):
 			print("Not Find HeadImg")
 		try:
 			paragraph = day60.html.find('div.css-1yuhvjn>div>p')
-			webdate = paragraph[1].text
+			self.webDate = paragraph[1].text
 		except:
 			try:
 				paragraph = day60.html.find('div.css-1yuhvjn>div>div>p')
@@ -80,7 +80,7 @@ class ED60S(object):
 		else:
 			if text[-1] == '':
 				text.pop(-1)
-			self.Make_Image(text)
+			self.MakeImage(text)
 
 	def DownloadImg(self,imgUrl):
 		src = imgUrl[0].attrs.get("data-original")
@@ -95,7 +95,7 @@ class ED60S(object):
 		except Exception as msg:
 			print(f"下载中出现异常:{str(msg)}")
 
-	def Make_Image(self, text):#日期，正文传入
+	def MakeImage(self, text):#日期，正文传入
 		#print("img")
 		#创建内存对象
 		#File_RAM = io.BytesIO()
@@ -126,7 +126,7 @@ class ED60S(object):
 		img.paste(headimg, box=(40,40))
 		#标题写入
 		draw.multiline_text((200, 480), text='每天60秒读懂世界', fill='#ff3300', font=title_font, spacing=5)
-		draw.multiline_text((110, 560), text="%d.%02d.%02d"%(self.date[0],self.date[1],self.date[2]), fill='#ff9922', font=date_font, spacing=5)
+		draw.multiline_text((110, 560), text=self.webdate, fill='#ff9922', font=date_font, spacing=5)
 		#边框绘制
 		draw.rectangle([(18,18), (782,hight-18)], outline='#444444', width=4)
 		draw.line([(40,460), (760,460)], fill='#444444', width=4)
