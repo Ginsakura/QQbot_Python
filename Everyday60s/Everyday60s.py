@@ -62,13 +62,10 @@ class ED60S(object):
 		except:
 			print("Not Find HeadImg")
 		try:
-			paragraph = day60.html.find('div.css-1yuhvjn>div>p')
-			self.webDate = paragraph[1].text
+			paragraph = day60.html.find('div.css-1yuhvjn>div>div>p')
+			self.webDate = paragraph[0].text
 		except:
-			try:
-				paragraph = day60.html.find('div.css-1yuhvjn>div>div>p')
-			except:
-				print("Text Find Error")
+			print("Text Find Error")
 		head = paragraph[2].text
 		del paragraph[0:3]
 		text = list()
@@ -126,7 +123,7 @@ class ED60S(object):
 		img.paste(headimg, box=(40,40))
 		#标题写入
 		draw.multiline_text((200, 480), text='每天60秒读懂世界', fill='#ff3300', font=title_font, spacing=5)
-		draw.multiline_text((110, 560), text=self.webdate, fill='#ff9922', font=date_font, spacing=5)
+		draw.multiline_text((110, 560), text=self.webDate, fill='#ff9922', font=date_font, spacing=5)
 		#边框绘制
 		draw.rectangle([(18,18), (782,hight-18)], outline='#444444', width=4)
 		draw.line([(40,460), (760,460)], fill='#444444', width=4)
@@ -142,7 +139,7 @@ class ED60S(object):
 		#内存写入
 		#img.save(File_RAM, 'png')
 		#图像渲染与显示
-		img.show()
+		#img.show()
 		self.Output()
 
 
