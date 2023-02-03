@@ -5,6 +5,7 @@ import sys
 from PIL import Image, ImageFont, ImageDraw
 import sqlite3
 import datetime
+from base64 import b64decode
 from requests_html import HTMLSession as html
 
 class ED60S(object):
@@ -20,7 +21,8 @@ class ED60S(object):
 		self.webData = None
 		self.dayLink = None
 		self.d60Url = None
-		self.version = "2.0.0"
+		self.Headimg = io.BytesIO(b64decode("iVBORw0KGgoAAAANSUhEUgAAAEgAAAAoCAIAAADSeytKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALRSURBVGhD7ZihkrMwEMfzfS/CRHTO5wkyFVV1KGRU1RlkRQUCWYNCRaLqTiFu8gT4zgmGN7n/JqEFSntT5ubmuOFngE3J7j/Z3XT4V9c1+4v899c/xyJsbizC5sYibG4swubGImxuLMLmxuDffaP1O2N8rWRAT2afl6tNqqQbfYbGmMvE5INzJSdMM5n+jjXvbwlQuXHP9bkoktI/PEddl2WZZUqprIQqzrgf+CHGU7GYJqaLVGmavr7Q7WotAaXADzIqTIjzVZlYdde6sfiH53Gvd/EDHm+0eJPFmyze5PC224hGhVVVVWR68GOzD0POZRzHUnIe7ifsaaPx7gAeto7ggEvM7wdib0ehk/060L7gB+I8p4iGAY0Ji6JICPb2fq1+8qqKqop0fTqdah2xEeVfE3CbmuJwiNqrdYSJGh3CgTgYTG8OgoYtWAtnh2P4pYEXbhsbDTAKKE2PeKEalM/ojm12W+xaolRSOUOjs4IC2bm+xldwUNmAJiC2a5vc9orkqD5qZvI3FMDhqChmr59w9ujV2uHXGgmTIzaxtQE19YePs8N48wjW2+uiAfsmAvENAJ4Flvr7aOozBLqtsE/2erFvhueEW2isbYx+G8YZO2hj0t6vxoWxQL3abBmnH8c30F/ysQ0gcBj5Abey2OETjkgUB07aYBDMHWFo17tOpssNZF5yz6YBi27WcTo2tz1Uzf7WZw6qp6FWEbeV0SYlctiCMdCv+bvCLptGJQCZKNwqkeEenQiOUc39nR/QaPTQMLQhVklM94/aqPNVKOq7qhBoXn4dA3WE43MWI9/O7KoedrQBeoECkuqMvuDqsOWLD6Y4IYLOJvsDo2uaymBmws3et/ZsZk+y0TlbDQ/i+eVfgnEKyKQSkT7uWG4bf6RPD3Ol5fd/4m6MzssPulttduubJnGP5dv93FiEzY1F2NxYhM2NRdjcWITNC8Y+AQqKke12y8pfAAAAAElFTkSuQmCC"))
+		self.version = "2.0.1"
 		self.updateText = "以类方式重写"
 
 	def GetWebPage(self):
@@ -49,20 +51,22 @@ class ED60S(object):
 		#print("d60s")
 		day60 = html().get(url=self.d60Url, headers=self.UA)
 		#imgf = open('./head.jpg','wb+')
-		headimghtml = day60.html.find('figure>noscript>img',first=True).html
-		headimgurl = re.findall(r'data-original="(.*)"/>',headimghtml)[0]
-		headimg = html().get(url=headimgurl)
-		#imgf.write(headimg.content)
-		#imgf.close()
-		#headimg = headimg.content
-		Headimg = io.BytesIO(headimg.content)
+		try:
+			headimghtml = day60.html.find('figure>noscript>img',first=True).html
+			headimgurl = re.findall(r'data-original="(.*)"/>',headimghtml)[0]
+			headimg = html().get(url=headimgurl)
+			#imgf.write(headimg.content)
+			#imgf.close()
+			#headimg = headimg.content
+			self.Headimg = io.BytesIO(headimg.content)
+		except:
+			print("Not Find HeadImg")
 		try:
 			paragraph = day60.html.find('div.css-1yuhvjn>div>p')
 			webdate = paragraph[1].text
 		except:
 			try:
 				paragraph = day60.html.find('div.css-1yuhvjn>div>div>p')
-				webdate = paragraph[1].text
 			except:
 				print("Text Find Error")
 		head = paragraph[2].text
@@ -70,21 +74,13 @@ class ED60S(object):
 		text = list()
 		for i in paragraph:
 			text.append(i.text)
-		try:
-			weiyu = text[len(text)-1]
-			weiyu = re.findall(r'(【.*)', weiyu)[0]
-			if weiyu != None:
-				del text[len(text)-1]
-			text.append(weiyu)
-		except:
-			print(f'Not Found the Text.')
 		#print(len(text))
 		if len(text) == 0:
 			self.DownloadImg(day60.html.find('div.css-1yuhvjn>div>figure>img'))
 		else:
 			if text[-1] == '':
 				text.pop(-1)
-			self.Make_Image(Headimg, webdate, text)
+			self.Make_Image(text)
 
 	def DownloadImg(self,imgUrl):
 		src = imgUrl[0].attrs.get("data-original")
@@ -99,7 +95,7 @@ class ED60S(object):
 		except Exception as msg:
 			print(f"下载中出现异常:{str(msg)}")
 
-	def Make_Image(self,headimage, date, text):#头图bin，日期，正文传入
+	def Make_Image(self, text):#日期，正文传入
 		#print("img")
 		#创建内存对象
 		#File_RAM = io.BytesIO()
@@ -125,12 +121,12 @@ class ED60S(object):
 		#创建绘图对象
 		draw=ImageDraw.Draw(img)
 		#头图传入
-		headimg = Image.open(headimage)
+		headimg = Image.open(self.Headimg)
 		headimg = headimg.resize((720, 400))
 		img.paste(headimg, box=(40,40))
 		#标题写入
 		draw.multiline_text((200, 480), text='每天60秒读懂世界', fill='#ff3300', font=title_font, spacing=5)
-		draw.multiline_text((110, 560), text=date, fill='#ff9922', font=date_font, spacing=5)
+		draw.multiline_text((110, 560), text="%d.%02d.%02d"%(self.date[0],self.date[1],self.date[2]), fill='#ff9922', font=date_font, spacing=5)
 		#边框绘制
 		draw.rectangle([(18,18), (782,hight-18)], outline='#444444', width=4)
 		draw.line([(40,460), (760,460)], fill='#444444', width=4)
