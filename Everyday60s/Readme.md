@@ -12,6 +12,9 @@ pip列表：
 `pip install pillow`
 
 ### 更新信息：
+#### Version 2.0.2
+1. 修复格式问题导致第一条新闻缺失
+
 #### Version 2.0.1
 1. 修复因没有头图而导致的报错
 2. 重写readme.md
