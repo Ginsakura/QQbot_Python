@@ -22,7 +22,7 @@ class ED60S(object):
 		self.dayLink = None
 		self.d60Url = None
 		self.Headimg = io.BytesIO(b64decode("iVBORw0KGgoAAAANSUhEUgAAAEgAAAAoCAIAAADSeytKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALRSURBVGhD7ZihkrMwEMfzfS/CRHTO5wkyFVV1KGRU1RlkRQUCWYNCRaLqTiFu8gT4zgmGN7n/JqEFSntT5ubmuOFngE3J7j/Z3XT4V9c1+4v899c/xyJsbizC5sYibG4swubGImxuLMLmxuDffaP1O2N8rWRAT2afl6tNqqQbfYbGmMvE5INzJSdMM5n+jjXvbwlQuXHP9bkoktI/PEddl2WZZUqprIQqzrgf+CHGU7GYJqaLVGmavr7Q7WotAaXADzIqTIjzVZlYdde6sfiH53Gvd/EDHm+0eJPFmyze5PC224hGhVVVVWR68GOzD0POZRzHUnIe7ifsaaPx7gAeto7ggEvM7wdib0ehk/060L7gB+I8p4iGAY0Ji6JICPb2fq1+8qqKqop0fTqdah2xEeVfE3CbmuJwiNqrdYSJGh3CgTgYTG8OgoYtWAtnh2P4pYEXbhsbDTAKKE2PeKEalM/ojm12W+xaolRSOUOjs4IC2bm+xldwUNmAJiC2a5vc9orkqD5qZvI3FMDhqChmr59w9ujV2uHXGgmTIzaxtQE19YePs8N48wjW2+uiAfsmAvENAJ4Flvr7aOozBLqtsE/2erFvhueEW2isbYx+G8YZO2hj0t6vxoWxQL3abBmnH8c30F/ysQ0gcBj5Abey2OETjkgUB07aYBDMHWFo17tOpssNZF5yz6YBi27WcTo2tz1Uzf7WZw6qp6FWEbeV0SYlctiCMdCv+bvCLptGJQCZKNwqkeEenQiOUc39nR/QaPTQMLQhVklM94/aqPNVKOq7qhBoXn4dA3WE43MWI9/O7KoedrQBeoECkuqMvuDqsOWLD6Y4IYLOJvsDo2uaymBmws3et/ZsZk+y0TlbDQ/i+eVfgnEKyKQSkT7uWG4bf6RPD3Ol5fd/4m6MzssPulttduubJnGP5dv93FiEzY1F2NxYhM2NRdjcWITNC8Y+AQqKke12y8pfAAAAAElFTkSuQmCC"))
-		self.version = "2.0.2"
+		self.version = "2.0.3"
 		self.updateText = "Bug Fix"
 
 	def GetWebPage(self):
@@ -64,12 +64,12 @@ class ED60S(object):
 			print("Not Find HeadImg")
 		try:
 			paragraph = day60.html.find('div.css-376mun>div.css-1g0fqss>p')
-			self.webDate = paragraph[0].text
 		except:
 			print("Text Find Error")
 		head = paragraph[2].text
 		# print([i.text for i in paragraph])
 		if paragraph[0].text == '':del paragraph[0]
+		self.webDate = paragraph[0].text
 		del paragraph[0:2]
 		text = list()
 		for i in paragraph:
@@ -127,6 +127,7 @@ class ED60S(object):
 		#标题写入
 		draw.multiline_text((200, 480), text='每天60秒读懂世界', fill='#ff3300', font=title_font, spacing=5)
 		draw.multiline_text((110, 560), text=self.webDate, fill='#ff9922', font=date_font, spacing=5)
+		print(self.webDate)
 		#边框绘制
 		draw.rectangle([(18,18), (782,hight-18)], outline='#444444', width=4)
 		draw.line([(40,460), (760,460)], fill='#444444', width=4)
