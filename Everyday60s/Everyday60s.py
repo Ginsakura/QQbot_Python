@@ -127,7 +127,7 @@ class ED60S(object):
 		#标题写入
 		draw.multiline_text((200, 480), text='每天60秒读懂世界', fill='#ff3300', font=title_font, spacing=5)
 		draw.multiline_text((110, 560), text=self.webDate, fill='#ff9922', font=date_font, spacing=5)
-		print(self.webDate)
+		# print(self.webDate)
 		#边框绘制
 		draw.rectangle([(18,18), (782,hight-18)], outline='#444444', width=4)
 		draw.line([(40,460), (760,460)], fill='#444444', width=4)
