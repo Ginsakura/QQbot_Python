@@ -22,7 +22,7 @@ class ED60S(object):
 		self.dayLink = None
 		self.d60Url = None
 		self.Headimg = io.BytesIO(b64decode("iVBORw0KGgoAAAANSUhEUgAAAEgAAAAoCAIAAADSeytKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALRSURBVGhD7ZihkrMwEMfzfS/CRHTO5wkyFVV1KGRU1RlkRQUCWYNCRaLqTiFu8gT4zgmGN7n/JqEFSntT5ubmuOFngE3J7j/Z3XT4V9c1+4v899c/xyJsbizC5sYibG4swubGImxuLMLmxuDffaP1O2N8rWRAT2afl6tNqqQbfYbGmMvE5INzJSdMM5n+jjXvbwlQuXHP9bkoktI/PEddl2WZZUqprIQqzrgf+CHGU7GYJqaLVGmavr7Q7WotAaXADzIqTIjzVZlYdde6sfiH53Gvd/EDHm+0eJPFmyze5PC224hGhVVVVWR68GOzD0POZRzHUnIe7ifsaaPx7gAeto7ggEvM7wdib0ehk/060L7gB+I8p4iGAY0Ji6JICPb2fq1+8qqKqop0fTqdah2xEeVfE3CbmuJwiNqrdYSJGh3CgTgYTG8OgoYtWAtnh2P4pYEXbhsbDTAKKE2PeKEalM/ojm12W+xaolRSOUOjs4IC2bm+xldwUNmAJiC2a5vc9orkqD5qZvI3FMDhqChmr59w9ujV2uHXGgmTIzaxtQE19YePs8N48wjW2+uiAfsmAvENAJ4Flvr7aOozBLqtsE/2erFvhueEW2isbYx+G8YZO2hj0t6vxoWxQL3abBmnH8c30F/ysQ0gcBj5Abey2OETjkgUB07aYBDMHWFo17tOpssNZF5yz6YBi27WcTo2tz1Uzf7WZw6qp6FWEbeV0SYlctiCMdCv+bvCLptGJQCZKNwqkeEenQiOUc39nR/QaPTQMLQhVklM94/aqPNVKOq7qhBoXn4dA3WE43MWI9/O7KoedrQBeoECkuqMvuDqsOWLD6Y4IYLOJvsDo2uaymBmws3et/ZsZk+y0TlbDQ/i+eVfgnEKyKQSkT7uWG4bf6RPD3Ol5fd/4m6MzssPulttduubJnGP5dv93FiEzY1F2NxYhM2NRdjcWITNC8Y+AQqKke12y8pfAAAAAElFTkSuQmCC"))
-		self.version = "2.0.3"
+		self.version = "2.0.4"
 		self.updateText = "Bug Fix"
 
 	def GetWebPage(self):
@@ -42,10 +42,10 @@ class ED60S(object):
 			print("Not found the web page.")
 		if os.path.isfile(f'./Img/Everyday60s-{"%d.%02d.%02d"%(self.date[0],self.date[1],self.date[2])}.png'):
 			self.Output()
-		elif not self.d60Url is None:
-			self.Day60s()
-		else:
+		elif self.d60Url is None:
 			print("Find Link Error.")
+		else:
+			self.Day60s()
 
 	def Day60s(self):
 		#print("d60s")
@@ -148,7 +148,7 @@ class ED60S(object):
 
 
 	def Output(self):
-		print(f'[CQ:image,cache=0,file=file:///C:/Users/Administrator/Desktop/MiraiCQ/Img/Everyday60s-{"%d.%02d.%02d"%(self.date[0],self.date[1],self.date[2])}.png]')
+		print(f'[CQ:image,cache=1,file=file:///C:/Users/Administrator/Desktop/MiraiCQ/Img/Everyday60s-{"%d.%02d.%02d"%(self.date[0],self.date[1],self.date[2])}.png]')
 	
 	def Hight(self,text):
 		#print("hight")

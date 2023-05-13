@@ -1,10 +1,13 @@
-*.pyc
 /__pycache__
+/Img
+/Tarot_Data
 /data
+/GoCQHttp/go-cqhttp
+/GoCQHttp/Data
+sync.bat
 *.db
 *.zip
 *.rar
 *.7z
-/Tarot_Data
 *.png
-/Img
+*.pyc
