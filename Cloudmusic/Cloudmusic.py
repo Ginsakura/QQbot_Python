@@ -162,6 +162,11 @@ class Cloudmusic():
         self.User_Data_Write()  
         #print(f'[CQ:music,type=custom,url=https://y.music.163.com/m/song/{self.songID},audio=http://music.163.com/song/media/outer/url?id={self.songID},title={self.songName},content={self.singer},image={self.imageURL}]')
         print(f'[CQ:music,type=163,id={self.songID}]')
+    def send_record(self):
+        resource_url = r'http://music.163.com/song/media/outer/url?{id}'.format(id=self.songID)
+        cq_code = r"[CQ:record,file={file_url}]".format(file_url=resource_url)
+        print(cq_code)
+        # //todo 调用go-cqhttp 的api 发送录音到群
 
     def User_Data_Write(self):##点歌数据写入模块##已完成##未测试##
         #print(self.time,self.user,self.songID,self.songName,self.album,self.singer,self.imageURL,f'Http:{self.status}')
